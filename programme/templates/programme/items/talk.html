@@ -1,0 +1,42 @@
+    <div class="talk">{% autoescape off %}
+        <div class="talk_item">
+{%          if talk.site != "/" %}
+            <a href="{{ talk.site }}">
+{%          endif %}
+                <span class="speaker">{{ talk.speaker }} </span>
+                <span class="title">{{ talk.title }} </span>
+{%          if talk.site != "/" %}
+            </a>
+{%          endif %}
+            <span style="width:2em;"></span>
+{%          if talk.slide != "/" %}
+            <a href="{{ talk.slide }}">
+{%              load static %}
+                <img src="{% static 'programme/images/slides.png' %}" style="vertical-align:middle;height:1.5em;", alt="slides"/>
+            </a>
+{%          endif %}
+{%          if talk.video != "/" %}
+            <a href="{{ talk.video }}">
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+            </a>
+{%          endif %}
+            <br>
+            <span class="date">{{ talk.pub_date|date:"d M Y" }},</span>
+            <span class="conference">At <i>{{ talk.place }}</i></span>
+
+        </div>
+
+        <input type="checkbox" class="btnCtrl" id="talk{{ talk.id }}"/>
+        <label class="btn display-status" for="talk{{ talk.id }}">
+            <i class="fa fa-plus-circle plus"></i>
+            <i class="fa fa-minus-circle minus"></i>
+        </label>
+        <div class="description">
+            <div class="summary">
+                {{ talk.short_description }}
+            </div>
+            <div class="details">
+                {{ talk.abstract }}
+            </div>
+        </div>{% endautoescape %}
+    </div>
