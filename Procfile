@@ -1,1 +1,1 @@
-web: palaisien carnet.wsgi --log-file -
+web: gunicorn palaisien.wsgi --log-file -
