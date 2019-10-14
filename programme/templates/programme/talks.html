@@ -1,13 +1,13 @@
 <article class="inner-text">
     <header class="entry-header">
-        <h1 class="entry-title">Past Seminars</h1>
+        <h1 class="entry-title">Past Talks</h1>
     </header>
 
     <div class="entry-content">
-
-{% for talk in past_talks %}
-    {{ talk.render }}
-{% endfor %}
-
+        <div class="talks-list">
+{%          for talk in talks %}
+                {{ talk.render }}
+{%          endfor %}
+        </div>
     </div>
 </article>

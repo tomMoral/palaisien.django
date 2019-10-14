@@ -84,8 +84,8 @@ a{
 }
 #page{
 	background-color: white;
-	/*width: 75%;
-	min-width: 900px;*/
+	width: 75%;
+	min-width: 900px;
 	min-height: 100%;
 	vertical-align: top;
 	margin-right: 5%;
@@ -100,11 +100,12 @@ a{
 		padding-left: 8%;
 		text-align: justify;
 	}
-	#page h3{
-		padding-left: 3%;
-	}
 	#page .fa{
 		color: black;
+	}
+	#page label{
+		display: list-item;
+		list-style: none;
 }
 
 .entry-content{
@@ -112,16 +113,26 @@ a{
 	padding-top: 1em;
 }
 
+.talks-list{
+	padding: 5%;
+}
+
 
 /*------------------------------------------------------
 						List of projects
 -------------------------------------------------------*/
-.publication, .project, .talk{
+.seminar{
 	background-color: rgba(128, 128, 128, .1);
 	margin: 1em;
 	padding: 1em;
 	width: 95%;
 	display: list-item;
+}
+.talk{
+	background-color: rgba(203, 203, 203, .4);
+	margin: 1em;
+	padding: 1em;
+	width: 100%;
 }
 .project_item{
 	width: 100%;

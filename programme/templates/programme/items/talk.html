@@ -3,11 +3,12 @@
 {%          if talk.site != "/" %}
             <a href="{{ talk.site }}">
 {%          endif %}
-                <span class="speaker">{{ talk.speaker }} </span>
-                <span class="title">{{ talk.title }} </span>
+                <span class="speaker">{{ talk.speaker }}</span>
 {%          if talk.site != "/" %}
             </a>
 {%          endif %}
+            <span>-</span>
+            <span class="title">{{ title }} </span>
             <span style="width:2em;"></span>
 {%          if talk.slide != "/" %}
             <a href="{{ talk.slide }}">
@@ -20,9 +21,6 @@
                 <i class="fa fa-video-camera" aria-hidden="true"></i>
             </a>
 {%          endif %}
-            <br>
-            <span class="date">{{ talk.pub_date|date:"d M Y" }},</span>
-            <span class="conference">At <i>{{ talk.place }}</i></span>
 
         </div>
 
@@ -33,10 +31,10 @@
         </label>
         <div class="description">
             <div class="summary">
-                {{ talk.short_description }}
+                {{ desc }}
             </div>
             <div class="details">
-                {{ talk.abstract }}
+                {{ abstract }}
             </div>
         </div>{% endautoescape %}
     </div>

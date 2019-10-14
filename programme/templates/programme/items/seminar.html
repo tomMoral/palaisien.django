@@ -1,0 +1,15 @@
+    <div class="seminar">
+        <div class="seminar_item">
+            <span class="date">{{ seminar.date|date:"d M Y" }},</span>
+            <span class="conference">At <i>{{ seminar.place }}</i></span>
+            <a href="{% url 'register' seminar.id %}">
+                REGISTER
+            </a>
+        </div>
+
+        <div class="description">
+{%          for talk in seminar.talk_set.all %}
+                {{ talk.render }}
+{%          endfor %}
+        </div>
+    </div>
