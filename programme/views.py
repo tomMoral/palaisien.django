@@ -12,6 +12,8 @@ def index(request):
                         for talk in seminar.talk_set.all()]
 
     content_name = request.path.replace('/', '')
+    if content_name == '':
+        content_name = 'about'
     context = {
         'talks': latest_talk_list,
         'seminars': latest_seminar_list,
