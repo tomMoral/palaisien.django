@@ -5,6 +5,7 @@ from .utils import process_code_blocks
 class Seminar(models.Model):
     """Seminar"""
     date = models.DateField('seminar date')
+    time = models.TimeField('seminar time', default='4pm')
     place = models.CharField(max_length=500)
 
     def __str__(self):

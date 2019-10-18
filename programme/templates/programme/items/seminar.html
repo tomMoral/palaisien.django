@@ -3,7 +3,7 @@
             <a class="register" href="{% url 'register' seminar.id %}">
                 REGISTER
             </a>
-            <span class="date">{{ seminar.date|date:"d M Y" }},</span>
+	    <span class="date">{{ seminar.date|date:"d M Y" }}, {{ seminar.time|time:"H" }}h </span>
             <span class="conference">At <i>{{ seminar.place }}</i></span>
         </div>
 
