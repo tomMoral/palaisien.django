@@ -57,6 +57,10 @@ a{
 	.logo_institution{
 		width: 70%;
 	}
+	.logo_funding{
+		height: 10em;
+		vertical-align: top;
+	}
 
 	.menu-nav{
 		border-bottom: solid darkgray 1px;
@@ -111,6 +115,7 @@ a{
 .entry-content{
 	width: 95%;
 	padding-top: 1em;
+	padding-bottom: 4em;
 }
 
 .talks-list{
@@ -244,7 +249,7 @@ a{
 		margin: 2em 0em 2em 2em;
 	}
 
-	.info, .profile_img, .logo_institution{
+	.info, .profile_img, .logo_institution, .logo_funding{
 		display:inline-block;
 		vertical-align: middle;
 	}

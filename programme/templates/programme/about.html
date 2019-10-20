@@ -1,3 +1,6 @@
+{% load static %}
+
+
 <article class="inner-text">
     <header class="entry-header">
         <h1 class="entry-title">About the seminar</h1>
@@ -20,8 +23,44 @@
         {{ seminars.0.render }}
         {{ seminars.1.render }}
     <br/>
-    <div width=100% style="text-align: center;">
+    <div width=100% style="text-align: left;">
     <iframe src="https://calendar.google.com/calendar/embed?height=300&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FParis&amp;src=aWV1ZjdxZmQ2N3QxY2F2MWNsMnBvN3U2ajRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23B39DDB&amp;showTitle=1&amp;mode=MONTH&amp;showNav=1&amp;showTabs=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;showDate=1&amp;title=Seminar%20Shared%20Calendar" style="border-width:0" width="600" height="300" frameborder="0" scrolling="no"></iframe></div>
+
+    <h3>Scientific Committee</h3>
+    <p>
+        The program and the organization of this seminar is driven by a scientific committee composed of members of the different laboratories in Saclay. The members of the committee are currently:
+    </p>
+    <ul>
+        <li><a href="https://www.math.u-psud.fr/~arlot/">
+            Arlot Sylvain</a> (LMO, Université Paris-Sud)</li>
+        <li><a href="http://www.math.uni-potsdam.de/~blanchard/">
+            Blanchard Gilles</a> (LMO, Université Paris-Sud)</li>
+        <li><a href="https://vebrunel.com/about/">
+            Brunel Victor-Emmanuel</a> (CREST, ENSAE)</li>
+        <li><a href="http://www.cmap.polytechnique.fr/~aymeric.dieuleveut/">
+            Dieuleveut Aymeric</a> (CMAP, Ecole polytechnique)</li>
+        <li><a href="https://tommoral.github.io">
+            Moreau Thomas</a> (Parietal, Inria)</li>
+        <li><a href="http://fredericpascal.blogspot.com/">
+            Mozharovskyi Pavlo</a> (LTCI, Telecom Paris</li>
+        <li><a href="http://fredericpascal.blogspot.com/">
+            Pascal Frederic</a> (L2S, CentraleSupelec)</li>
+        <li><a href="https://sites.google.com/site/gquercini/">
+            Quercini Gianluca</a> (LRI, CentraleSupelec)</li>
+        <li><a href="https://myriamtami.github.io/"">
+            Tami Myriam</a> (MICS, CentraleSupelec)</li>
+    </ul>
+
+    <h3>Funding</h3>
+    <p>
+        This seminar is made possible with financial support of the ENSAE and DataIA.
+    </p>
+    <div>
+        <img class="logo_funding"
+         src="{% static 'programme/images/logo_dataia_bleu.png' %}" />
+        <img class="logo_funding" style="height: 15em;"
+         src="{% static 'programme/images/logo_ensae_black.png' %}" />
+    </div>
 </div><!-- .entry-content -->
 
 </article><!-- #post -->
