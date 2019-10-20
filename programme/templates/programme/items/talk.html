@@ -1,3 +1,4 @@
+{% load static %}
     <div class="talk">{% autoescape off %}
         <div class="talk_item">
 {%          if talk.site != "/" %}
@@ -12,7 +13,6 @@
             <span style="width:2em;"></span>
 {%          if talk.slide != "/" %}
             <a href="{{ talk.slide }}">
-{%              load static %}
                 <img src="{% static 'programme/images/slides.png' %}" style="vertical-align:middle;height:1.5em;", alt="slides"/>
             </a>
 {%          endif %}
@@ -20,6 +20,11 @@
             <a href="{{ talk.video }}">
                 <i class="fa fa-video-camera" aria-hidden="true"></i>
             </a>
+{%          endif %}
+{%          if date %}
+                </br>
+                <span class="date">{{ date|date:"d M Y" }}</span>
+                <span class="conference">At <i>{{ place }}</i></span>
 {%          endif %}
 
         </div>

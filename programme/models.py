@@ -39,12 +39,12 @@ class Talk(models.Model):
     def __str__(self):
         return f"{self.speaker} - {self.title}"
 
-    def render(self):
+    def render(self, date=None, place=None):
         from django.template import loader
         template = loader.get_template("programme/items/talk.html")
 
         return template.render({
-            "talk": self,
+            "talk": self, "date": date, "place": place,
             "title": process_code_blocks(self.title),
             "desc": process_code_blocks(self.short_description),
             "abstract": process_code_blocks(self.abstract),
