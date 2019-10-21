@@ -36,9 +36,9 @@ a{
 
 	color: white;
 
-	background-color: rgba(0, 57, 158, 0.7);
-	background: -moz-linear-gradient(rgba(0, 57, 158, 0.7), rgba(0, 57, 158, 1));
-	background: linear-gradient(rgba(0, 57, 158, 0.5), rgba(0, 57, 158, 1));
+	background-color: rgba(73, 87, 244, 0.7);
+	background: -moz-linear-gradient(rgba(73, 87, 244, 0.7), rgba(73, 87, 244, 1));
+	background: linear-gradient(rgba(73, 87, 244, 0.5), rgba(73, 87, 244, 1));
 }
 	#sidebar .site-title a:link{
 		text-decoration: none;
