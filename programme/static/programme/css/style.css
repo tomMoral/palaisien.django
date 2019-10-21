@@ -32,13 +32,16 @@ a{
 	width: 20%;
 	text-align: center;
 	min-width: 300px;
-	padding: 5em 0em 5em 0em;
+	padding: 1em 0em 5em 0em;
 
 	color: white;
 
-	background-color: rgba(73, 87, 244, 0.7);
+	/*background-color: rgba(73, 87, 244, 0.7);
 	background: -moz-linear-gradient(rgba(73, 87, 244, 0.7), rgba(73, 87, 244, 1));
-	background: linear-gradient(rgba(73, 87, 244, 0.5), rgba(73, 87, 244, 1));
+	background: linear-gradient(rgba(73, 87, 244, 0.5), rgba(73, 87, 244, 1));*/
+	background-color: #4957F4;
+	background: -moz-linear-gradient(#4957F4FF , #4957F4E5);
+	background: linear-gradient(#4957F4FF , #4957F4E5);
 }
 	#sidebar .site-title a:link{
 		text-decoration: none;
