@@ -3,3 +3,4 @@
 # cache folders
 __pycache__
 staticfiles
+.pytest_cache/

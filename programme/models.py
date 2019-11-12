@@ -9,7 +9,8 @@ class Seminar(models.Model):
     place = models.CharField(max_length=500)
 
     def __str__(self):
-        return f"Seminar {self.date:%d-%m-%Y} -- {self.place}"
+        return (f"Seminar {self.date:%d-%m-%Y} -- {self.place}"
+                f" -- {self.attendees_set.count()} participants")
 
     def render(self):
         from django.template import loader

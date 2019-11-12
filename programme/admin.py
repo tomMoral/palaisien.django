@@ -9,9 +9,12 @@ HEADER = "\t\t\t{}\nSurname\tName\tInstitution\n"
 
 
 class SeminarAdmin(admin.ModelAdmin):
-    list_display = ['date', 'place']
+    list_display = ['date', 'place', 'number_attendees']
     ordering = ['date']
     actions = ['list_attendees']
+
+    def number_attendees(self, obj):
+        return obj.attendees_set.count()
 
     def list_attendees(self, request, queryset):
         seminar = queryset.first()
