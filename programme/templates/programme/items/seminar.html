@@ -4,7 +4,12 @@
                 REGISTER
             </a>
 	    <span class="date">{{ seminar.date|date:"d M Y" }}, {{ seminar.time|time:"H" }}h </span>
-            <span class="conference">At <i>{{ seminar.place }}</i></span>
+{%          if seminar.link is not None %}
+                <span class="conference"> On <i>{{ seminar.place }}</i>
+		<a class="register" href="{{seminar.link}}">LINK</a></span>
+{%          else %}
+                <span class="conference">At <i>{{ seminar.place }}</i></span>
+{%          endif %}
         </div>
 
         <div class="description">
