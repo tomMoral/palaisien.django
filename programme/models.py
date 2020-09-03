@@ -7,6 +7,8 @@ class Seminar(models.Model):
     date = models.DateField('seminar date')
     time = models.TimeField('seminar time', default='16:00')
     place = models.CharField(max_length=500)
+    link = models.CharField(max_length=500, default=None, blank=True,
+                            null=True)
 
     def __str__(self):
         return (f"Seminar {self.date:%d-%m-%Y} -- {self.place}"
