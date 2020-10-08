@@ -28,8 +28,7 @@ Victor-Emmanuel & Thomas for the "Séminaire Palaisien"
 
 
 class SeminarAdmin(admin.ModelAdmin):
-    list_display = ['date', 'place', 'number_attendees', 'create_email',
-                    'admin_visio_link']
+    list_display = ['date', 'place_', 'number_attendees', 'create_email']
     ordering = ['-date']
 
     def number_attendees(self, obj):
@@ -40,10 +39,14 @@ class SeminarAdmin(admin.ModelAdmin):
             href=reverse('admin:list-attendees', args=[obj.pk]),
         )
 
-    def admin_visio_link(self, obj):
+    def place_(self, obj):
+
         if obj.private_link is not None:
-            return format_html('<a href={href}>visio</a>',
-                               href=obj.private_link)
+            return format_html(
+                '{place} (<a href={href}>admin link</a>)',
+                place=obj.place, href=obj.private_link
+            )
+        return obj.place
 
     def list_attendees(self, request, seminar_id):
         seminar = self.get_object(request, seminar_id)
@@ -83,10 +86,7 @@ class SeminarAdmin(admin.ModelAdmin):
         return format_html('<a href="{href}">send announcement</a>',
                            href=href)
 
-    create_email.short_description = "Announcement email"
-    list_attendees.short_description = "List attendees"
-    admin_visio_link.short_description = "Admin Visio Link"
-
+    # Make the seminar's action available as URL to allow for link to action
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
@@ -97,6 +97,11 @@ class SeminarAdmin(admin.ModelAdmin):
             ),
         ]
         return custom_urls + urls
+
+    # Format the name of the columns
+    create_email.short_description = "Announcement email"
+    list_attendees.short_description = "List attendees"
+    list_attendees.place_ = "Place"
 
 
 admin.site.register(Seminar, SeminarAdmin)
