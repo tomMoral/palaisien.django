@@ -34,7 +34,7 @@ class SeminarAdmin(admin.ModelAdmin):
     def number_attendees(self, obj):
         n_attendees = obj.attendees_set.count()
         return format_html(
-            '{n_attendees} (<a href="{href}">list</a>)',
+            '{n_attendees} [<a href="{href}">list</a>]',
             n_attendees=n_attendees,
             href=reverse('admin:list-attendees', args=[obj.pk]),
         )
@@ -43,7 +43,7 @@ class SeminarAdmin(admin.ModelAdmin):
 
         if obj.private_link is not None:
             return format_html(
-                '{place} (<a href={href}>admin link</a>)',
+                '{place} [<a href={href}>admin link</a>]',
                 place=obj.place, href=obj.private_link
             )
         return obj.place
