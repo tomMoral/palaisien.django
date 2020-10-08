@@ -1,6 +1,8 @@
 import urllib
+
 from django.contrib import admin
 from django.http import HttpResponse
+from django.urls import reverse, path
 from django.utils.html import format_html
 
 
@@ -26,15 +28,25 @@ Victor-Emmanuel & Thomas for the "Séminaire Palaisien"
 
 
 class SeminarAdmin(admin.ModelAdmin):
-    list_display = ['date', 'place', 'number_attendees', 'create_email']
-    ordering = ['date']
-    actions = ['list_attendees']
+    list_display = ['date', 'place', 'number_attendees', 'create_email',
+                    'admin_visio_link']
+    ordering = ['-date']
 
     def number_attendees(self, obj):
-        return obj.attendees_set.count()
+        n_attendees = obj.attendees_set.count()
+        return format_html(
+            '{n_attendees} (<a href="{href}">list</a>)',
+            n_attendees=n_attendees,
+            href=reverse('admin:list-attendees', args=[obj.pk]),
+        )
 
-    def list_attendees(self, request, queryset):
-        seminar = queryset.first()
+    def admin_visio_link(self, obj):
+        if obj.private_link is not None:
+            return format_html('<a href={href}>visio</a>',
+                               href=obj.private_link)
+
+    def list_attendees(self, request, seminar_id):
+        seminar = self.get_object(request, seminar_id)
         if seminar is None:
             return
 
@@ -73,6 +85,18 @@ class SeminarAdmin(admin.ModelAdmin):
 
     create_email.short_description = "Announcement email"
     list_attendees.short_description = "List attendees"
+    admin_visio_link.short_description = "Admin Visio Link"
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path(
+                r'<int:seminar_id>/list_attendees/',
+                self.admin_site.admin_view(self.list_attendees),
+                name='list-attendees',
+            ),
+        ]
+        return custom_urls + urls
 
 
 admin.site.register(Seminar, SeminarAdmin)
