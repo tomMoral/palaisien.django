@@ -147,7 +147,16 @@ a{
 	font-weight: bold;
 	float: right;
 }
-.talk{
+.seminar .full{
+	margin-left: 3ex;
+	background-color: #f55b63;
+	border-radius: 5pt;
+	padding: 3pt 5pt;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	float: right;
+}.talk{
 	background-color: rgba(203, 203, 203, .4);
 	margin: 1em;
 	padding: 1em;

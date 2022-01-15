@@ -1,8 +1,14 @@
     <div class="seminar">
         <div class="seminar_item">
-            <a class="register" href="{% url 'register' seminar.id %}">
-                REGISTER
-            </a>
+{%          if seminar.attendees_set.count() < 55 %}
+                <a class="register" href="{% url 'register' seminar.id %}">
+                    REGISTER
+                </a>
+{%          else %}
+                <a class="full">
+                    FULL
+                </a>
+{%          endif %}
 	    <span class="date">{{ seminar.date|date:"d M Y" }}, {{ seminar.time|time:"H" }}h </span>
 {%          if seminar.link is not None %}
                 <span class="conference"> On <i>{{ seminar.place }}</i>

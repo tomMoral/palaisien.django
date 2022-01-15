@@ -70,7 +70,7 @@ class SeminarAdmin(admin.ModelAdmin):
 
         talks = obj.talk_set.iterator()
         title_and_abstracts = []
-        time_slots = ["16h-16h40", "16h40-17h20"] + ["00h-00h"] * 10
+        time_slots = ["12h-12h40", "12h40-13h20"] + ["00h-00h"] * 10
         for talk, slot in zip(talks, time_slots):
             speaker = f"[{talk.speaker}]({talk.site})"
             abstract = f"Abstract: {talk.abstract}"
