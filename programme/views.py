@@ -40,11 +40,16 @@ def register(request, seminar_id):
         form = SeminarRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            # import IPython; IPython.embed(colors='neutral')
             messages.success(request, "You have successfully registered")
             return redirect('index', permanent=True)
 
-    a = Attendees(seminar=Seminar.objects.get(id=seminar_id))
+    seminar = Seminar.objects.get(id=seminar_id)
+    if (seminar.capacity is not None
+            and seminar.attendees_set.count() >= seminar.capacity):
+        messages.error(request, "The seminar is already full.")
+        return redirect('index', permanent=False)
+
+    a = Attendees(seminar=seminar)
     form = SeminarRegistrationForm(instance=a)
 
     context = {

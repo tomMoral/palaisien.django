@@ -1,6 +1,6 @@
     <div class="seminar">
         <div class="seminar_item">
-{%          if seminar.attendees_set.count < 55 %}
+{%          if seminar.capacity is None or seminar.attendees_set.count < seminar.capacity %}
                 <a class="register" href="{% url 'register' seminar.id %}">
                     REGISTER
                 </a>
