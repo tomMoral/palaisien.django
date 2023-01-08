@@ -29,8 +29,14 @@ DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'palaisien.herokuapp.com',
+    'palaisien.fly.dev'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://0.0.0.0",
+    "http://localhost",
+    "https://palaisien.fly.dev",
+]
 
 # Application definition
 
@@ -52,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'palaisien.urls'
@@ -134,6 +141,3 @@ STATIC_URL = '/static/'
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-import django_heroku
-django_heroku.settings(locals())

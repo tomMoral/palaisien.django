@@ -1,0 +1,7 @@
+fly.toml
+.git/
+*.sqlite3
+programme/static/programme/slides/
+**/__pycache__/
+affiches/
+RELEASE.md
