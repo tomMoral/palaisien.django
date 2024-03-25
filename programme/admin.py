@@ -16,6 +16,7 @@ HEADER = "\t\t\t{}\nSurname\tName\tInstitution\n"
 EMAIL_BODY_TEMPLATE = """
 Dear all,
 
+REGISTER{register_url}
 
 We hope to see you soon,
 Best regards,
@@ -70,7 +71,7 @@ class SeminarAdmin(admin.ModelAdmin):
 
         talks = obj.talk_set.iterator()
         title_and_abstracts = []
-        time_slots = ["12h-12h40", "12h40-13h20"] + ["00h-00h"] * 10
+        time_slots = ["12h15-12h55", "13h-13h45"] + ["00h-00h"] * 10
         for talk, slot in zip(talks, time_slots):
             speaker = f"[{talk.speaker}]({talk.site})"
             abstract = f"Abstract: {talk.abstract}"
@@ -79,7 +80,9 @@ class SeminarAdmin(admin.ModelAdmin):
 
         title_and_abstracts = ("-"*80 + '\n').join(title_and_abstracts)
         body = urllib.parse.quote(EMAIL_BODY_TEMPLATE.format(
-            title_and_abstracts=title_and_abstracts))
+            title_and_abstracts=title_and_abstracts,
+            register_url=reverse("register", kwargs={'seminar_id': obj.id}),
+        ))
 
         href = f"mailto:{to}?subject={subject}&body={body}"
 

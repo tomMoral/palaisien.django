@@ -5,13 +5,13 @@ from .utils import process_code_blocks
 class Seminar(models.Model):
     """Seminar"""
     date = models.DateField('seminar date')
-    time = models.TimeField('seminar time', default='16:00')
-    place = models.CharField(max_length=500)
+    time = models.TimeField('seminar time', default='12:15')
+    place = models.CharField(max_length=500, default="TBA")
     link = models.CharField(max_length=500, default=None, blank=True,
                             null=True)
     private_link = models.CharField(max_length=500, default=None,
-                                    null=True)
-    capacity = models.IntegerField('Capacity', default=None, null=True)
+                                    null=True, blank=True)
+    capacity = models.IntegerField('Capacity', default=200, null=True)
 
     def __str__(self):
         return (f"Seminar {self.date:%d-%m-%Y} -- {self.place}"
@@ -34,9 +34,9 @@ class Talk(models.Model):
     site = models.CharField(max_length=500, default='/')
 
     # Information on the talk
-    title = models.CharField(max_length=500)
-    abstract = models.TextField(default="")
-    short_description = models.CharField(max_length=500, default="")
+    title = models.CharField(max_length=500, default="TBA")
+    abstract = models.TextField(default="TBA")
+    short_description = models.CharField(max_length=500, default="TBA")
 
     # ref to slides or recordings of the talk
     slide = models.CharField(max_length=500, default="/")
